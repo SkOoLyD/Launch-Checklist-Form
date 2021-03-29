@@ -142,5 +142,6 @@ form.addEventListener("submit", function(event){
          document.getElementById('launchStatus').innerText = 'Shuttle is ready for Launch!';
 
          document.getElementById('launchStatus').style.color = "green";
-};
+      };
+            
 
