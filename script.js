@@ -46,16 +46,49 @@ form.addEventListener("submit", function(event){
    if (pilotNameInput.value.trim() === "" || 
       coPilotNameInput.value.trim() === "" ||
       fuelLevelInput.value.trim() === "" ||
-      cargoMassInput.value.trim() === "" || ) {
+      cargoMassInput.value.trim() === "" || ) 
+      { 
          alert("All fields are required!");  
          event.preventDefault();
          fieldCheck = false;
          document.getElementById("faultyItems").style.visibility = "hidden";
-      } else if (typeof String(pilotNameInput.value)
-      !== "string" || pilotNameInput.value.trim().length === 0)
-      {
+
+      } else if (typeof String(copilotNameInput.value)
+      !== "string" || cocpilotNameInput.value.trim().length === 0) {  
+         
          alert("Pilot Name Is Required");
+
          event.preventDefault();
          fieldCheck = false; 
+         document.getElementById("faultyItems").style.visibility = "hidden";
+      } else if (!isNaN(Number(pilotNameInput.value)) && pilotNameInput.value.trim().length > 0) {
+         
+         alert("Invalid Input: No Numbers Can Be Used In Pilot Names Field");
+
+         event.preventDefault();
+         fieldCheck = false;
+         document.getElementById("faultyItems").style.visibility = "hidden";
+      } else if (typeof String(coPilotNameInput.value) !== "string" || coPilotNameInput.value.trim().length === 0) {
+
+         alert("Co-Pilot Field Is Required");
+
+         event.preventDefault();
+         fieldCheck = false;
+         document.getElementById("faultyItems").style.visibility = "hidden";
+      } else if (!isNaN(Number(coPilotNameInput.value)) && coPilotNameInput.value.trim().length > 0) {
+
+         alert("Invalid Input : No Numbers Can Be Used In CoPilot Name Field");
+
+         event.preventDefault();
+         feildCheck = false;
+         document.getElementById("faultyItems").style.visibility = "hidden";
+      } else if (typeof Number(fuelLevelInput.value) !== "number" || isNaN(Number(fuelLevelInput.value))) {
+
+         alert("Invalid Input: Only Numbers Can Be Used In Fuel Level Input");
+      }
+
+      }
+      }
+
       }
 }
