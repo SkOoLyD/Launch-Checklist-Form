@@ -144,4 +144,5 @@ form.addEventListener("submit", function(event){
          document.getElementById('launchStatus').style.color = "green";
       };
             
-
+   });
+});   
