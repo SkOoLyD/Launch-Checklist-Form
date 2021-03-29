@@ -80,11 +80,66 @@ form.addEventListener("submit", function(event){
          alert("Invalid Input : No Numbers Can Be Used In CoPilot Name Field");
 
          event.preventDefault();
-         feildCheck = false;
+         fieldCheck = false;
          document.getElementById("faultyItems").style.visibility = "hidden";
       } else if (typeof Number(fuelLevelInput.value) !== "number" || isNaN(Number(fuelLevelInput.value))) {
 
          alert("Invalid Input: Only Numbers Can Be Used In Fuel Level Input");
+
+         event.preventDefault();
+         fieldCheck = false;
+         document.getElementById("faultyItems").style.visibility ="hidden";
+
+      } else if (typeof Number(cargoMassInput.value) !== "number" || isNaN(Number(cargoMassInput.value))) {
+
+         alert("Invalid Input: Only Numbers Can Be Used for Cargo Mass");
+
+         event.preventDefault();
+         fieldCheck = false;
+         document.getElementById("faultyItems").style.visibility = "hidden";
+      } else {
+         fieldCheck = true;
+      }
+      if (Number(fuelLevelInput.value) < 10000 && fieldCheck) {
+
+         document.getElementById("faultyItems").style.visibility = "visible";
+
+         document.getElementById("fuelStatus").innerText = `There is not enough fuel for the journey! We have 
+         ${fuelLevelInput.value}L loaded and at least 10,000L are needed!`
+
+         document.getElementById('launchStatus').innerText = 'Shuttle not ready for Launch!';
+
+         document.getElementById('launchStatus').style.color = "red";
+
+         fuelReady = false;
+         event.preventDefault();              
+
+      } else {
+         fuelReady = true;
+ 
+      }
+      if (Number(cargoMassInput.value) > 10000 && fieldCheck) {
+
+         document.getElementById("faultyItems").style.visibility = "visible";
+
+         document.getElementById("cargoStatus").innerText = `There is too much mass for the Shuttle to take off!
+         Max load is 10000kg and we have ${cargoMassInput.value}kg!`
+
+         document.getElementById('launchStatus').innerText = 'Shuttle not ready for Launch!';
+
+         document.getElementById('launchStatus').style.color = "red";
+
+         cargoReady = false;
+         event.preventDefault();
+      
+      } else {
+         cargoReady = true;
+      }
+      if (fuelReady && cargoReady && fieldCheck) {
+
+         document.getElementById("faultyItems").style.visibility = "visible";
+
+         document.getElementById('launchStatus').innerText = 
       }
 
       }
