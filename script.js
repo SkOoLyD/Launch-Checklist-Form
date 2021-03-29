@@ -1,5 +1,5 @@
 // Write your JavaScript code here!
-let fuelready = false;
+let fuelReady = false;
 let cargoReady = false;
 let feildCheck;
 window.addEventListener("load",function() {
@@ -31,4 +31,31 @@ form.addEventListener("submit", function(event){
    let coPilotNameInput = doucument.querySelector("input[name=coPilotName");
    let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
    let cargoMassInput = document.querySelector("input[name=cargoMass]");
+   
+   document.getElementById('launchStatus').innerText = 'Awaiting Information Before Launch';
+   document.getElementById('launchStatus').style.color = "black";
+   document.getElementById("pilotStatus").innerText = `Pilot ${pilotNameInput.value} Ready`;
+   document.getElementById("copilotStatus").innerText = `Co-Pilot ${coPilotNameInput.value} Ready`;
+   document.getElementById("fuelStatus").innerText = "Fuel Level High Enough For Launch";
+   document.getElementById("cargoStatus").innerText = "Cargo Mass Low Enough For";
+
+   fieldCheck = false;
+   cargoReady = false;
+   fuelReady = false;
+
+   if (pilotNameInput.value.trim() === "" || 
+      coPilotNameInput.value.trim() === "" ||
+      fuelLevelInput.value.trim() === "" ||
+      cargoMassInput.value.trim() === "" || ) {
+         alert("All fields are required!");  
+         event.preventDefault();
+         fieldCheck = false;
+         document.getElementById("faultyItems").style.visibility = "hidden";
+      } else if (typeof String(pilotNameInput.value)
+      !== "string" || pilotNameInput.value.trim().length === 0)
+      {
+         alert("Pilot Name Is Required");
+         event.preventDefault();
+         fieldCheck = false; 
+      }
 }
