@@ -47,7 +47,7 @@ form.addEventListener("submit", function(event){
       coPilotNameInput.value.trim() === "" ||
       fuelLevelInput.value.trim() === "" ||
       cargoMassInput.value.trim() === "" || ) 
-      { 
+   { 
          alert("All fields are required!");  
          event.preventDefault();
          fieldCheck = false;
